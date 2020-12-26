@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.solvd.ECommerceTesting.pages.login.ECHomeLogin;
 import com.solvd.ECommerceTesting.pages.ECHomePage;
+import com.solvd.ECommerceTesting.pages.search.ECSearchPage;
 import com.solvd.ECommerceTesting.pages.shoppingcart.ECShoppingCartPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,12 @@ public class ECHeaderComponent extends AbstractUIObject {
 
     @FindBy(css = "#header_logo a")
     private ExtendedWebElement logoLinkToHome;
+
+    @FindBy(id = "search_query_top")
+    private ExtendedWebElement searchInput;
+
+    @FindBy(css = "#searchbox button")
+    private ExtendedWebElement searchButton;
 
     public ECHeaderComponent(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -37,5 +44,11 @@ public class ECHeaderComponent extends AbstractUIObject {
     public ECHomePage gotoHomePage(){
         logoLinkToHome.click();
         return new ECHomePage(driver);
+    }
+
+    public ECSearchPage search(String item){
+        searchInput.type(item);
+        searchButton.click();
+        return new ECSearchPage(driver);
     }
 }

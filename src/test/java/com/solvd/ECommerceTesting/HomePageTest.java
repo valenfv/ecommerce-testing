@@ -16,17 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 public class HomePageTest extends AbstractTest implements LoginService {
 
-    @Test
-    public void addToCartTest(){
-        ECHomePage hp = new ECHomePage(getDriver());
-        hp.open();
-        ECProductCartModal pcm = hp.addToCart(0, ECHomePage.Tabs.POPULAR);
-        WebDriverWait wait = new WebDriverWait(getDriver(),10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(pcm.getRootBy()));
-        Assert.assertTrue(pcm.getProductName().equals(hp.getProductName(0, ECHomePage.Tabs.POPULAR)), "Names on homepage and modal didn't match");
-        pcm.closeModal();
-    }
-
     @Test(dataProvider = "DP1")
     public void addItemToCartTest(String name, String price){
 
