@@ -17,6 +17,7 @@ public class ECProductCartModal extends AbstractUIObject {
     private ExtendedWebElement closeModalButton;
 
 
+
     private static final String ROOT_ID = "layer_cart";
 
     public ECProductCartModal(WebDriver driver, SearchContext searchContext) {
@@ -37,5 +38,6 @@ public class ECProductCartModal extends AbstractUIObject {
     public void closeModal(){
         closeModalButton.click();
     }
+
 
 }

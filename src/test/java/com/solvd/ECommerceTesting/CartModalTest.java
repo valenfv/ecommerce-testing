@@ -51,6 +51,5 @@ public class CartModalTest extends AbstractTest {
                 { "TUID: Tab " + ECHomePage.Tabs.POPULAR, ECHomePage.Tabs.POPULAR },
                 { "TUID: Tab " + ECHomePage.Tabs.BESTSELLER, ECHomePage.Tabs.BESTSELLER }
         };
-        //return new ECHomePage.Tabs[]{ECHomePage.Tabs.BESTSELLER};
     }
 }

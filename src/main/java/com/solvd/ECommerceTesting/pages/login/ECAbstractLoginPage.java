@@ -1,12 +1,16 @@
 package com.solvd.ECommerceTesting.pages.login;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.solvd.ECommerceTesting.components.ECHeaderComponent;
 import com.solvd.ECommerceTesting.pages.ECAbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public abstract class ECAbstractLoginPage extends ECAbstractPage {
     public static final String DIV_ERROR_CLASS = "form-error";
+
+    @FindBy(id = "header")
+    private ECHeaderComponent header;
 
     @FindBy(id = "email")
     protected ExtendedWebElement emailInput;
@@ -24,6 +28,12 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
         super(driver);
     }
 
+    /*
+    * login method must be abstract due to redirections
+    * Uses
+    *   - Regular login page - redirects to my account
+    *   - Shopping cart login page - redirects to home shopping car address component
+    * */
     public abstract ECAbstractPage login(String email, String password);
 
     public boolean isEmailWrong(EmailInputId inputId){
@@ -33,6 +43,10 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
     public void typeEmailAndPassword(String email, String password){
         emailInput.type(email);
         passwordInput.type(password);
+    }
+
+    public ECHeaderComponent getHeader() {
+        return header;
     }
 
     public enum EmailInputId{

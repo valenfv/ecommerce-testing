@@ -15,6 +15,9 @@ public class ECHeaderComponent extends AbstractUIObject {
     @FindBy(css = "div.header_user_info a.login")
     private ExtendedWebElement singInButton;
 
+    @FindBy(css = "div.header_user_info a.logout")
+    private ExtendedWebElement logOutButton;
+
     @FindBy(css = ".shopping_cart > a")
     private ExtendedWebElement shoppingCartLink;
 
@@ -50,5 +53,14 @@ public class ECHeaderComponent extends AbstractUIObject {
         searchInput.type(item);
         searchButton.click();
         return new ECSearchPage(driver);
+    }
+
+    public ECHomeLogin logOut(){
+        logOutButton.click();
+        return new ECHomeLogin(driver);
+    }
+
+    public boolean isLoggedIn(){
+        return logOutButton.isPresent();
     }
 }

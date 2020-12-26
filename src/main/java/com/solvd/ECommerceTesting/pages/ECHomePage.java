@@ -4,13 +4,12 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.solvd.ECommerceTesting.components.ECHeaderComponent;
 import com.solvd.ECommerceTesting.components.ECProductCartModal;
 import com.solvd.ECommerceTesting.components.ECProductResult;
+import com.solvd.ECommerceTesting.pages.products.ECProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ECHomePage extends ECAbstractPage{
 
@@ -71,9 +70,10 @@ public class ECHomePage extends ECAbstractPage{
         return getHomePageItems(tab).size();
     }
 
-    public ECProductCartModal getCartModal(){
-        return cartModal;
+    public ECProductPage popularQuickView(int itemNumber){
+        return getPopularItem(itemNumber).quickView(this.getRootElement());
     }
+
 
     public enum Tabs{
         POPULAR("homefeatured"),
