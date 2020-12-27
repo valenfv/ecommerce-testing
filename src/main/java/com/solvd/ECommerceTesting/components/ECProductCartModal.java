@@ -22,12 +22,10 @@ public class ECProductCartModal extends AbstractUIObject {
 
     public ECProductCartModal(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
-        setRootBy(By.id(ROOT_ID));
     }
 
     public ECProductCartModal(WebDriver driver) {
         super(driver);
-        setRootBy(By.id(ROOT_ID));
     }
 
 

@@ -17,4 +17,14 @@ public class ECHomeLogin extends ECAbstractLoginPage{
         submitButton.click();
         return new ECMyAccountPage(driver);
     }
+
+    @Override
+    public ECAbstractLoginPage loginWrongCredentials(String email, String password) {
+        emailInput.type(email);
+        passwordInput.type(password);
+        submitButton.click();
+        return new ECHomeLogin(driver);
+    }
+
+
 }

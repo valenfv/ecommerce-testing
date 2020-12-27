@@ -2,12 +2,12 @@ package com.solvd.ECommerceTesting;
 
 import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
-import com.solvd.ECommerceTesting.components.ECHeaderComponent;
+import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
+import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
+import com.solvd.ECommerceTesting.components.ECHeader;
 import com.solvd.ECommerceTesting.pages.login.ECAbstractLoginPage;
-import com.solvd.ECommerceTesting.pages.login.ECHomeLogin;
 import com.solvd.ECommerceTesting.pages.account.ECMyAccountPage;
 import com.solvd.ECommerceTesting.services.LoginService;
-import org.apache.commons.lang.RandomStringUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,23 +15,38 @@ import java.util.HashMap;
 
 public class LoginTest extends AbstractTest implements LoginService {
 
-    @Test
-    public void loginMailValidation(){
-        ECAbstractLoginPage lp = openLoginPage(getDriver());
+    /*
+    * ALL sensitive data is being encrypted (passwords)
+    * Key for decryption is under ./src/main/resources/crypto.key
+    * */
 
-        lp.typeEmailAndPassword(RandomStringUtils.random(10, true, true), RandomStringUtils.random(10, true, true));
-        Assert.assertTrue(lp.isEmailWrong(ECAbstractLoginPage.EmailInputId.LOGIN), "Email input didn't show an error when typing the wrong value");
-        lp.typeEmailAndPassword(RandomStringUtils.random(10, true, true) + "@gmail.com", RandomStringUtils.random(10, true, true));
-        Assert.assertFalse(lp.isEmailWrong(ECAbstractLoginPage.EmailInputId.LOGIN), "Email input showed an error when typing the right value");
+    @Test
+    @TestPriority(Priority.P3)
+    public void loggingInWithInvalidFormatEmail(){
+        ECAbstractLoginPage lp = openLoginPage(getDriver());
+        // validates wrong email
+        lp.typeEmailAndPassword(getRandomInvalidEmail(), getRandomPassword());
+        Assert.assertTrue(lp.isEmailWrong(ECAbstractLoginPage.EmailInputId.LOGIN), "Email input didn't show an error when typing the invalid email");
+        //validates right email
+        lp.typeEmailAndPassword(getRandomValidEmail(), getRandomPassword());
+        Assert.assertTrue(lp.isEmailValid(ECAbstractLoginPage.EmailInputId.LOGIN), "Email input showed an error when typing the valid email");
     }
 
     @Test(dataProvider = "DataProvider")
-    @XlsDataSourceParameters(path = "xls/demo.xlsx", sheet = "login", dsUid = "TUID")
-    public void loginSuccess(HashMap<String, String> args){
+    @XlsDataSourceParameters(path = "xls/ECData.xlsx", sheet = "login", dsUid = "TUID")
+    @TestPriority(Priority.P1)
+    public void loggingInWithValidCredentials(HashMap<String, String> args){
         ECAbstractLoginPage lp = openLoginPage(getDriver());
         ECMyAccountPage map = (ECMyAccountPage) lp.login(args.get("mail"), args.get("pass"));
-        ECHeaderComponent hc = map.getHeader();
-        Assert.assertTrue(hc.isLoggedIn(), "User was not logged in");
+        ECHeader hc = map.getHeader();
+        Assert.assertTrue(hc.isLoggedIn(), "User seems not to be logged in");
     }
 
+    @TestPriority(Priority.P3)
+    @Test
+    public void loggingInWithInvalidCredentials(){
+        ECAbstractLoginPage lp = openLoginPage(getDriver());
+        lp = lp.loginWrongCredentials(getRandomValidEmail(), getRandomPassword());
+        Assert.assertTrue(lp.credentialsWrong(), "Error wasn't shown when entering wrong credentials");
+    }
 }

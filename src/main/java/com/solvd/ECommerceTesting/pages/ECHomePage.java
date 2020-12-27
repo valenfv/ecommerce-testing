@@ -1,7 +1,7 @@
 package com.solvd.ECommerceTesting.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.ECommerceTesting.components.ECHeaderComponent;
+import com.solvd.ECommerceTesting.components.ECHeader;
 import com.solvd.ECommerceTesting.components.ECProductCartModal;
 import com.solvd.ECommerceTesting.components.ECProductResult;
 import com.solvd.ECommerceTesting.pages.products.ECProductPage;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ECHomePage extends ECAbstractPage{
 
     @FindBy(id = "header")
-    private ECHeaderComponent header;
+    private ECHeader header;
 
     /*
     *   BUG:
@@ -35,11 +35,12 @@ public class ECHomePage extends ECAbstractPage{
     @FindBy(xpath = "//div[@id='center_column']/div/ul[@id='blockbestsellers']/li")
     private List<ECProductResult> bsItems;
 
+
     public ECHomePage(WebDriver driver) {
         super(driver);
     }
 
-    public ECHeaderComponent getHeader(){
+    public ECHeader getHeader(){
         return header;
     }
 
@@ -74,6 +75,9 @@ public class ECHomePage extends ECAbstractPage{
         return getPopularItem(itemNumber).quickView(this.getRootElement());
     }
 
+    public ECProductCartModal getCartModal(){
+        return cartModal;
+    }
 
     public enum Tabs{
         POPULAR("homefeatured"),

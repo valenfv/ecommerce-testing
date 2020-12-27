@@ -17,4 +17,12 @@ public class ECCartLoginPage extends ECAbstractLoginPage{
         submitButton.click();
         return new ECCartAddressPage(driver);
     }
+
+    @Override
+    public ECAbstractLoginPage loginWrongCredentials(String email, String password) {
+        emailInput.type(email);
+        passwordInput.type(password);
+        submitButton.click();
+        return new ECCartLoginPage(driver);
+    }
 }

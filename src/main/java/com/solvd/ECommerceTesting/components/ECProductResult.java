@@ -26,9 +26,8 @@ public class ECProductResult extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public ECProductCartModal addToCart(){
+    public void addToCart(){
         addToCartButton.click();
-        return new ECProductCartModal(driver);
     }
 
     public String getName(){

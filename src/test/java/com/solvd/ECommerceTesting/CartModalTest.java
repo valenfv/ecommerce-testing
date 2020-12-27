@@ -36,10 +36,10 @@ public class CartModalTest extends AbstractTest {
                     itemResult = hp.getBSItem(item);
                     break;
             }
-            ECProductCartModal cm = itemResult.addToCart();
-            cm.waitUntil(ExpectedConditions.visibilityOfElementLocated(cm.getRootBy()), 10);
-            Assert.assertEquals(cm.getProductName(), itemResult.getName(), "Names must match on modal and result box");
-            cm.closeModal();
+            itemResult.addToCart();
+            hp.waitUntil(ExpectedConditions.visibilityOf(hp.getCartModal().getRootElement()), 10);
+            Assert.assertEquals(hp.getCartModal().getProductName(), itemResult.getName(), "Names must match on modal and result box");
+            hp.getCartModal().closeModal();
         }
     }
 

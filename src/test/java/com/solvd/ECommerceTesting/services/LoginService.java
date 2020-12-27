@@ -3,6 +3,7 @@ package com.solvd.ECommerceTesting.services;
 import com.solvd.ECommerceTesting.pages.login.ECHomeLogin;
 import com.solvd.ECommerceTesting.pages.ECHomePage;
 import com.solvd.ECommerceTesting.pages.account.ECMyAccountPage;
+import org.apache.commons.lang.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 
 public interface LoginService {
@@ -21,5 +22,16 @@ public interface LoginService {
         return map.getHeader().gotoHomePage();
     }
 
+    default String getRandomValidEmail(){
+        return RandomStringUtils.random(10, true, true) + "@gmail.com";
+    }
+
+    default String getRandomInvalidEmail(){
+        return RandomStringUtils.random(10, true, true);
+    }
+
+    default String getRandomPassword(){
+        return RandomStringUtils.random(10, true, true);
+    }
 
 }

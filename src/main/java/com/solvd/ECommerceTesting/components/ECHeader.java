@@ -10,7 +10,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class ECHeaderComponent extends AbstractUIObject {
+public class ECHeader extends AbstractUIObject {
 
     @FindBy(css = "div.header_user_info a.login")
     private ExtendedWebElement singInButton;
@@ -30,7 +30,8 @@ public class ECHeaderComponent extends AbstractUIObject {
     @FindBy(css = "#searchbox button")
     private ExtendedWebElement searchButton;
 
-    public ECHeaderComponent(WebDriver driver, SearchContext searchContext) {
+
+    public ECHeader(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 

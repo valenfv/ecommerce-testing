@@ -1,16 +1,17 @@
 package com.solvd.ECommerceTesting.pages.login;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.ECommerceTesting.components.ECHeaderComponent;
+import com.solvd.ECommerceTesting.components.ECHeader;
 import com.solvd.ECommerceTesting.pages.ECAbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public abstract class ECAbstractLoginPage extends ECAbstractPage {
-    public static final String DIV_ERROR_CLASS = "form-error";
+    public static final String DIV_WRONG_EMAIL_CLASS = "form-error";
+    public static final String DIV_VALID_EMAIL_CLASS = "form-ok";
 
     @FindBy(id = "header")
-    private ECHeaderComponent header;
+    private ECHeader header;
 
     @FindBy(id = "email")
     protected ExtendedWebElement emailInput;
@@ -23,6 +24,11 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
 
     @FindBy(id = "SubmitLogin")
     protected ExtendedWebElement submitButton;
+
+    @FindBy(xpath = "//div[@id = 'center_column']/div[contains(@class, 'alert alert-danger')]")
+    private ExtendedWebElement wrongCredentialsMessage;
+
+
 
     public ECAbstractLoginPage(WebDriver driver) {
         super(driver);
@@ -37,7 +43,11 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
     public abstract ECAbstractPage login(String email, String password);
 
     public boolean isEmailWrong(EmailInputId inputId){
-        return emailInputDiv.format(inputId.getId()).getAttribute("class").contains(DIV_ERROR_CLASS);
+        return emailInputDiv.format(inputId.getId()).getAttribute("class").contains(DIV_WRONG_EMAIL_CLASS);
+    }
+
+    public boolean isEmailValid(EmailInputId inputId){
+        return emailInputDiv.format(inputId.getId()).getAttribute("class").contains(DIV_VALID_EMAIL_CLASS);
     }
 
     public void typeEmailAndPassword(String email, String password){
@@ -45,9 +55,15 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
         passwordInput.type(password);
     }
 
-    public ECHeaderComponent getHeader() {
+    public ECHeader getHeader() {
         return header;
     }
+
+    public boolean credentialsWrong(){
+        return wrongCredentialsMessage.isPresent();
+    }
+
+    public abstract ECAbstractLoginPage loginWrongCredentials(String email, String password);
 
     public enum EmailInputId{
         LOGIN("email"),
