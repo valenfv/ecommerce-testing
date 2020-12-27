@@ -71,4 +71,8 @@ public class ECWishListPage extends ECAbstractPage {
         }
         return false;
     }
+
+    public boolean isWishListPresent(String name){
+        return wishLists.stream().anyMatch(s -> s.findExtendedWebElement(By.xpath(WL_NAME)).getText().equals(name));
+    }
 }

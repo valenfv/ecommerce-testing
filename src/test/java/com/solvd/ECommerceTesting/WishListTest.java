@@ -33,6 +33,7 @@ public class WishListTest extends AbstractTest implements LoginService {
         ECWishListPage wlp = map.goToWishListPage();
         String wlName = RandomStringUtils.random(10, true, true);
         wlp.createWishList(wlName);
-        Assert.assertTrue(wlp.deleteWLByName(wlName));
+        Assert.assertTrue(wlp.deleteWLByName(wlName), "Wishlist wasnt created");
+        Assert.assertFalse(wlp.isWishListPresent(wlName), "Wishlist wasnt deleted");
     }
 }
