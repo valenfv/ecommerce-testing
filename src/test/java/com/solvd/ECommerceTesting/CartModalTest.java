@@ -37,8 +37,7 @@ public class CartModalTest extends AbstractTest {
                     break;
             }
             ECProductCartModal cm = itemResult.addToCart();
-            WebDriverWait wait = new WebDriverWait(getDriver(),10);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(cm.getRootBy()));
+            cm.waitUntil(ExpectedConditions.visibilityOfElementLocated(cm.getRootBy()), 10);
             Assert.assertEquals(cm.getProductName(), itemResult.getName(), "Names must match on modal and result box");
             cm.closeModal();
         }
