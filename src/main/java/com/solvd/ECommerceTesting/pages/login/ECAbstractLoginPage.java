@@ -1,7 +1,6 @@
 package com.solvd.ECommerceTesting.pages.login;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.ECommerceTesting.components.ECHeader;
 import com.solvd.ECommerceTesting.pages.ECAbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -9,9 +8,6 @@ import org.openqa.selenium.support.FindBy;
 public abstract class ECAbstractLoginPage extends ECAbstractPage {
     public static final String DIV_WRONG_EMAIL_CLASS = "form-error";
     public static final String DIV_VALID_EMAIL_CLASS = "form-ok";
-
-    @FindBy(id = "header")
-    private ECHeader header;
 
     @FindBy(id = "email")
     protected ExtendedWebElement emailInput;
@@ -53,10 +49,6 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
     public void typeEmailAndPassword(String email, String password){
         emailInput.type(email);
         passwordInput.type(password);
-    }
-
-    public ECHeader getHeader() {
-        return header;
     }
 
     public boolean credentialsWrong(){

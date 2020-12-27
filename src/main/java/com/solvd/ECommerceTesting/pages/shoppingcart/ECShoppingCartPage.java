@@ -2,10 +2,8 @@ package com.solvd.ECommerceTesting.pages.shoppingcart;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.solvd.ECommerceTesting.pages.ECAbstractPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -37,6 +35,7 @@ public class ECShoppingCartPage extends ECAbstractPage {
     public void removeAllItems(){
         productRemoveButtons.stream().forEach(item -> {
             item.click();
+            // TODO Ask if this is the right place to wait for it to disappear or it should be outside
             item.waitUntilElementDisappear(10);
         });
     }

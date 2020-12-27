@@ -1,13 +1,13 @@
 package com.solvd.ECommerceTesting.pages.search;
 
-import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.solvd.ECommerceTesting.components.ECProductResult;
+import com.solvd.ECommerceTesting.pages.ECAbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ECSearchPage extends AbstractPage {
+public class ECSearchPage extends ECAbstractPage {
 
     @FindBy(xpath = "//div[@id = 'center_column']/ul[contains(@class, 'product_list grid row')]/li")
     private List<ECProductResult> results;

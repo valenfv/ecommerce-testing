@@ -1,7 +1,6 @@
 package com.solvd.ECommerceTesting.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.solvd.ECommerceTesting.components.ECHeader;
 import com.solvd.ECommerceTesting.components.ECProductCartModal;
 import com.solvd.ECommerceTesting.components.ECProductResult;
 import com.solvd.ECommerceTesting.pages.products.ECProductPage;
@@ -12,10 +11,6 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class ECHomePage extends ECAbstractPage{
-
-    @FindBy(id = "header")
-    private ECHeader header;
-
     /*
     *   BUG:
     *   Locator formatter won't work with css selector
@@ -38,10 +33,6 @@ public class ECHomePage extends ECAbstractPage{
 
     public ECHomePage(WebDriver driver) {
         super(driver);
-    }
-
-    public ECHeader getHeader(){
-        return header;
     }
 
     public void switchTab(Tabs tab){

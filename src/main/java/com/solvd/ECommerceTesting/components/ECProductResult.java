@@ -10,13 +10,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class ECProductResult extends AbstractUIObject {
 
-    private static final String CSS_ADD_TO_CART_BUTTON = "div div.right-block div.button-container a[title='Add to cart']";
-    private static final String CSS_ITEM_NAME = ".product-name";
-
-    @FindBy(css = CSS_ADD_TO_CART_BUTTON)
+    @FindBy(css = "div div.right-block div.button-container a[title='Add to cart']")
     private ExtendedWebElement addToCartButton;
 
-    @FindBy(css = CSS_ITEM_NAME)
+    @FindBy(css = ".product-name")
     private ExtendedWebElement productName;
 
     @FindBy(className = "quick-view")

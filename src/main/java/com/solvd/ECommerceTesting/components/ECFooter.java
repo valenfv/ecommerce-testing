@@ -6,8 +6,6 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class ECFooter extends AbstractUIObject {
 
     @FindBy(xpath = "//section[@id = 'social_block']/ul/li[@class = '%s']/a")

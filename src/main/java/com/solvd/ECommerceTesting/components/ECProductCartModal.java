@@ -2,10 +2,8 @@ package com.solvd.ECommerceTesting.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ECProductCartModal extends AbstractUIObject {
@@ -15,8 +13,6 @@ public class ECProductCartModal extends AbstractUIObject {
 
     @FindBy(css = "span.cross")
     private ExtendedWebElement closeModalButton;
-
-
 
     private static final String ROOT_ID = "layer_cart";
 
