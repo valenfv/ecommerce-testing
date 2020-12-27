@@ -34,4 +34,6 @@ public class ShoppingCartTest extends AbstractTest {
         scp.removeAllItems();
         Assert.assertTrue(scp.isShoppingCartEmpty(), "Shopping cart should be empty");
     }
+
+
 }

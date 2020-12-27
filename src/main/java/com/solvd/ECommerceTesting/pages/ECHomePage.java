@@ -50,6 +50,7 @@ public class ECHomePage extends ECAbstractPage{
     public List<ECProductResult> getBSItems() {
         return bsItems;
     }
+
     public ECProductResult getPopularItem(int itemNumber){
         return getPopularITems().get(itemNumber);
     }
@@ -70,6 +71,7 @@ public class ECHomePage extends ECAbstractPage{
         return cartModal;
     }
 
+    // enum for tabs on homepage
     public enum Tabs{
         POPULAR("homefeatured"),
         BESTSELLER("blockbestsellers");

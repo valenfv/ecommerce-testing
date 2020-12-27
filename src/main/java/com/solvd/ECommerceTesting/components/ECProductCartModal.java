@@ -8,6 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class ECProductCartModal extends AbstractUIObject {
 
+    /*
+    * This component is present on the search page and on the home page
+    * */
+
     @FindBy(id = "layer_cart_product_title")
     private ExtendedWebElement productName;
 

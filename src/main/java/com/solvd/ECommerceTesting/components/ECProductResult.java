@@ -10,6 +10,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class ECProductResult extends AbstractUIObject {
 
+    /*
+     * This component is present on the search page and on the home page
+     * */
+
     @FindBy(css = "div div.right-block div.button-container a[title='Add to cart']")
     private ExtendedWebElement addToCartButton;
 

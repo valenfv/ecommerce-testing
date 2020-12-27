@@ -22,6 +22,13 @@ public interface LoginService {
         return map.getHeader().gotoHomePage();
     }
 
+    default ECMyAccountPage loginDefault(WebDriver driver, String user, String password){
+        ECHomePage hp = new ECHomePage(driver);
+        hp.open();
+        ECHomeLogin hlogin =  hp.getHeader().openSignIn();
+        return (ECMyAccountPage) hlogin.login(user, password);
+    }
+
     default String getRandomValidEmail(){
         return RandomStringUtils.random(10, true, true) + "@gmail.com";
     }

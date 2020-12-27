@@ -57,6 +57,7 @@ public abstract class ECAbstractLoginPage extends ECAbstractPage {
 
     public abstract ECAbstractLoginPage loginWrongCredentials(String email, String password);
 
+    // this enum is used for every email validation field on login page
     public enum EmailInputId{
         LOGIN("email"),
         SIGNUP("email_create");

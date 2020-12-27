@@ -2,6 +2,7 @@ package com.solvd.ECommerceTesting;
 
 import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
+import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.solvd.ECommerceTesting.components.ECHeader;
@@ -21,6 +22,7 @@ public class LoginTest extends AbstractTest implements LoginService {
     * */
 
     @Test
+    @MethodOwner(owner = "fvazquez")
     @TestPriority(Priority.P3)
     public void loggingInWithInvalidFormatEmail(){
         ECAbstractLoginPage lp = openLoginPage(getDriver());
@@ -33,6 +35,7 @@ public class LoginTest extends AbstractTest implements LoginService {
     }
 
     @Test(dataProvider = "DataProvider")
+    @MethodOwner(owner = "fvazquez")
     @XlsDataSourceParameters(path = "xls/ECData.xlsx", sheet = "login", dsUid = "TUID")
     @TestPriority(Priority.P1)
     public void loggingInWithValidCredentials(HashMap<String, String> args){
@@ -42,8 +45,10 @@ public class LoginTest extends AbstractTest implements LoginService {
         Assert.assertTrue(hc.isLoggedIn(), "User seems not to be logged in");
     }
 
-    @TestPriority(Priority.P3)
+
     @Test
+    @MethodOwner(owner = "fvazquez")
+    @TestPriority(Priority.P3)
     public void loggingInWithInvalidCredentials(){
         ECAbstractLoginPage lp = openLoginPage(getDriver());
         lp = lp.loginWrongCredentials(getRandomValidEmail(), getRandomPassword());
