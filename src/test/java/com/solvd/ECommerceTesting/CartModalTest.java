@@ -21,7 +21,6 @@ public class CartModalTest extends AbstractTest {
 
     @Test(dataProvider = "TabsDataProvider")
     @MethodOwner(owner = "fvazquez")
-    @TestPriority(Priority.P3)
     public void checkNameOnModalAndResult(String TUID, ECHomePage.Tabs tab){
         ECHomePage hp = new ECHomePage(getDriver());
         hp.open();

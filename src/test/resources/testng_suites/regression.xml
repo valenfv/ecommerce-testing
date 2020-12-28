@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="ECommerce regression test using Carina Framework" parallel="tests">
+	<parameter name="suiteOwner" value="fvazquez"/>
+	<test name="Regression">
+		<classes>
+			<class name="com.solvd.ECommerceTesting.CartModalTest" />
+			<class name="com.solvd.ECommerceTesting.LoginTest" />
+			<class name="com.solvd.ECommerceTesting.SearchTest" />
+			<class name="com.solvd.ECommerceTesting.ShoppingCartTest" />
+			<class name="com.solvd.ECommerceTesting.WishListTest" />
+		</classes>
+	</test>
+</suite>

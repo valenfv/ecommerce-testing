@@ -23,7 +23,6 @@ public class LoginTest extends AbstractTest implements LoginService {
 
     @Test
     @MethodOwner(owner = "fvazquez")
-    @TestPriority(Priority.P3)
     public void loggingInWithInvalidFormatEmail(){
         ECAbstractLoginPage lp = openLoginPage(getDriver());
         // validates wrong email
@@ -37,7 +36,6 @@ public class LoginTest extends AbstractTest implements LoginService {
     @Test(dataProvider = "DataProvider")
     @MethodOwner(owner = "fvazquez")
     @XlsDataSourceParameters(path = "xls/ECData.xlsx", sheet = "login", dsUid = "TUID")
-    @TestPriority(Priority.P1)
     public void loggingInWithValidCredentials(HashMap<String, String> args){
         ECAbstractLoginPage lp = openLoginPage(getDriver());
         ECMyAccountPage map = (ECMyAccountPage) lp.login(args.get("mail"), args.get("pass"));
@@ -48,7 +46,6 @@ public class LoginTest extends AbstractTest implements LoginService {
 
     @Test
     @MethodOwner(owner = "fvazquez")
-    @TestPriority(Priority.P3)
     public void loggingInWithInvalidCredentials(){
         ECAbstractLoginPage lp = openLoginPage(getDriver());
         lp = lp.loginWrongCredentials(getRandomValidEmail(), getRandomPassword());

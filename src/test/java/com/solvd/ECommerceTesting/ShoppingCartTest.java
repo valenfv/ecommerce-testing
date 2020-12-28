@@ -19,7 +19,6 @@ public class ShoppingCartTest extends AbstractTest {
 
     @Test
     @MethodOwner(owner = "fvazquez")
-    @TestPriority(Priority.P2)
     public void removeItemsUntilCarEmpty(){
         ECHomePage hp = new ECHomePage(getDriver());
         hp.open();

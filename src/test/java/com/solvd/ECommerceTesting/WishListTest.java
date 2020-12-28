@@ -27,13 +27,12 @@ public class WishListTest extends AbstractTest implements LoginService {
 
     @Test
     @MethodOwner(owner = "fvazquez")
-    @TestPriority(Priority.P3)
     public void createAndDeleteWishList() {
         ECMyAccountPage map = loginDefault(getDriver(), R.TESTDATA.get("credentials"), R.TESTDATA.get("password"));
         ECWishListPage wlp = map.goToWishListPage();
         String wlName = RandomStringUtils.random(10, true, true);
         wlp.createWishList(wlName);
         Assert.assertTrue(wlp.deleteWLByName(wlName), "Wishlist wasnt created");
-        Assert.assertFalse(wlp.isWishListPresent(wlName), "Wishlist wasnt deleted");
+        Assert.assertFalse(wlp.isWishListPresent(wlName), "Wishlist wasn't deleted");
     }
 }
