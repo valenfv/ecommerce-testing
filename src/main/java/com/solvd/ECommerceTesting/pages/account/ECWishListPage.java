@@ -66,7 +66,8 @@ public class ECWishListPage extends ECAbstractPage {
         ExtendedWebElement ewe = wishLists.stream().filter(s -> s.findExtendedWebElement(By.xpath(WL_NAME)).getText().equals(name)).findFirst().orElse(null);
         if(ewe != null){
             ewe.findExtendedWebElement(By.xpath(WL_DELETE_BUTTON)).click();
-            driver.switchTo().alert().accept();
+            acceptAlert();
+            //driver.switchTo().alert().accept();
             return true;
         }
         return false;
