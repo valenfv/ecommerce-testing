@@ -7,6 +7,7 @@ import com.solvd.ECommerceTesting.pages.products.ECProductPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -68,6 +69,7 @@ public class ECHomePage extends ECAbstractPage{
     }
 
     public ECProductCartModal getCartModal(){
+        this.waitUntil(ExpectedConditions.visibilityOf(cartModal.getRootElement()), 10);
         return cartModal;
     }
 

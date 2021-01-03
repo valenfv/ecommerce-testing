@@ -36,7 +36,6 @@ public class CartModalTest extends AbstractTest {
                     break;
             }
             itemResult.addToCart();
-            hp.waitUntil(ExpectedConditions.visibilityOf(hp.getCartModal().getRootElement()), 10);
             Assert.assertEquals(hp.getCartModal().getProductName(), itemResult.getName(), "Names must match on modal and result box");
             hp.getCartModal().closeModal();
         }
